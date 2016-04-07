@@ -1,7 +1,7 @@
 # Tarantula
 Tarantula is an automated technique for localizing faults in software.  The creators of Tarantula have a website where you can read all about their research with Tarantula and software testing in general:
 
-    http://spideruci.org/research/
+[http://spideruci.org/research/](http://spideruci.org/research/)
 
 This is a very basic Python implementation of Tarantula that uses the pass/fail results of random tests in combination with the statement coverage reports produced by gcov to identify the most "suspicious" lines of code in a faulty program.  After running many tests and producing at least one failing test, Tarantula prints a ranked list of the most suspicious lines.  Suspiciousness ranges from 0 to 1, where 1 is the most suspicious and 0 is not at all suspicious.  Tarantula does not print unsuspicious lines.
 
@@ -15,19 +15,10 @@ Since Tarantula relies on the gcov report, the faulty code must be compiled with
 ## Usage
 Modify the variables inside the Setup section of tarantula.py.
 
-    <> numTests is the number of times tarantula should call the random
-        tester
-    <> randTester should be the path to a random tester that takes as
-        the its only command line argument a number which it uses as a
-        random seed for test generation.  The randTester should return
-        or exit with 1 in failing test cases or 0 in passing cases.
-    <> progFile is the path to the source file where tarantula is
-        searching for suspicious code.  progFile should be compiled
-        with gcov enabled (use the "-coverage" flag when compiling with
-        gcc/g++), and the randTester should run tests on the compiled
-        code.
-    <> gcdaFile is the path to the .gcda that gvoc produces when running
-        "gcov progFile".
+* numTests is the number of times tarantula should call the random tester
+* randTester should be the path to a random tester that takes as the its only command line argument a number which it uses as a random seed for test generation.  The randTester should return or exit with 1 in failing test cases or 0 in passing cases.
+* progFile is the path to the source file where tarantula is searching for suspicious code.  progFile should be compiled with gcov enabled (use the "-coverage" flag when compiling with gcc/g++), and the randTester should run tests on the compiled code.
+* gcdaFile is the path to the .gcda that gvoc produces when running "gcov progFile".
 
 The random testers I have written and used with this implementation of tarantula have a structure like this:
 
